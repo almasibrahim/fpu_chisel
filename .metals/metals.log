@@ -2133,3 +2133,597 @@ WARNING: Unmatched cancel notification for request id 531
 2022.04.23 15:03:00 WARN  no build target for: /home/almas/fpu_chisel/src/test/scala/FALUTest.scala[0m
 Apr 23, 2022 3:03:05 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
 INFO: Unsupported notification method: $/setTrace
+2022.04.23 15:03:48 WARN  no build target for: /home/almas/fpu_chisel/src/test/scala/FALUTest.scala[0m
+Apr 23, 2022 3:03:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 567
+Apr 23, 2022 3:03:54 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 574
+Apr 23, 2022 3:03:57 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didChange",
+  "params": {
+    "textDocument": {
+      "version": 17,
+      "uri": "file:///home/almas/fpu_chisel/src/test/scala/ALUTest%20.scala"
+    },
+    "contentChanges": [
+      {
+        "text": "import chisel3._\nimport org.scalatest._\nimport chiseltest._\nimport chisel3.experimental.BundleLiterals._\nimport chiseltest.experimental.TestOptionBuilder._\nimport chiseltest.internal.VerilatorBackendAnnotation\n\nclass ALUTest extends FreeSpec with ChiselScalatestTester {\n\n  \"ALU Test\" in {\n    test(new ALU()).withAnnotations(Seq(VerilatorBackendAnnotation)){ c \u003d\u003e\n      c.io.input1.poke(\"h40000000\".U)   \n      c.io.input2.poke(\"h40800000\".U)    //9e4   \n      c.io.f5.poke(\"b00010\".U)             // expected output (47fde800)\n      c.io.opcode.poke(\"b1010011\".U)\n      c.clock.step(100)\n    }\n  }\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n// Working\n    //   c.io.instIn.poke(\"h952E9426\".U)\n    //   c.io.pcIn.poke(12.U)\n    //   c.clock.step(1)\n    // //   c.io.pcIn.poke(c.io.pcOut.peek)\n    // //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.io.instIn.poke(\"h00940433\".U)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.instIn.poke(\"h952E9426\".U)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.io.instIn.poke(\"h00940433\".U)\n"
+      }
+    ]
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor10.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.metals.Diagnostics.publishDiagnostics(Diagnostics.scala:195)
+	at scala.meta.internal.metals.Diagnostics.publishDiagnostics(Diagnostics.scala:164)
+	at scala.meta.internal.metals.Diagnostics.didChange(Diagnostics.scala:112)
+	at scala.meta.internal.metals.MetalsLanguageServer.didChange(MetalsLanguageServer.scala:1193)
+	... 15 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 23 more
+
+Apr 23, 2022 3:03:57 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.parsing.FoldingRangeProvider.$anonfun$getRangedForScala$3(FoldingRangeProvider.scala:38)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.parsing.FoldingRangeProvider.$anonfun$getRangedForScala$2(FoldingRangeProvider.scala:33)
+	at scala.Option$WithFilter.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.FoldingRangeProvider.getRangedForScala(FoldingRangeProvider.scala:31)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$foldingRange$2(MetalsLanguageServer.scala:1640)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 19 more
+
+Apr 23, 2022 3:03:57 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.metals.Buffers.tokenEditDistance(Buffers.scala:30)
+	at scala.meta.internal.metals.codelenses.RunTestCodeLens.codeLenses(RunTestCodeLens.scala:63)
+	at scala.meta.internal.metals.CodeLensProvider.$anonfun$findLenses$3(CodeLensProvider.scala:26)
+	at scala.collection.immutable.List.flatMap(List.scala:366)
+	at scala.meta.internal.metals.CodeLensProvider.$anonfun$findLenses$2(CodeLensProvider.scala:26)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.metals.CodeLensProvider.findLenses(CodeLensProvider.scala:24)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeLens$2(MetalsLanguageServer.scala:1628)
+	at scala.meta.internal.metals.TimerProvider.timedThunk(TimerProvider.scala:25)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeLens$1(MetalsLanguageServer.scala:1626)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$apply$2(CancelTokens.scala:26)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 25 more
+
+Apr 23, 2022 3:03:59 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didChange",
+  "params": {
+    "textDocument": {
+      "version": 18,
+      "uri": "file:///home/almas/fpu_chisel/src/test/scala/ALUTest%20.scala"
+    },
+    "contentChanges": [
+      {
+        "text": "import chisel3._\nimport org.scalatest._\nimport chiseltest._\nimport chisel3.experimental.BundleLiterals._\nimport chiseltest.experimental.TestOptionBuilder._\nimport chiseltest.internal.VerilatorBackendAnnotation\n\nclass ALUTest extends FreeSpec with ChiselScalatestTester {\n\n  \"ALU Test\" in {\n    test(new ALU()).withAnnotations(Seq(VerilatorBackendAnnotation)){ c \u003d\u003e\n      c.io.input1.poke(\"h40000000\".U)   \n      c.io.input2.poke(\"h40800000\".U)      \n      c.io.f5.poke(\"b00010\".U)             // expected output (47fde800)\n      c.io.opcode.poke(\"b1010011\".U)\n      c.clock.step(100)\n    }\n  }\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n// Working\n    //   c.io.instIn.poke(\"h952E9426\".U)\n    //   c.io.pcIn.poke(12.U)\n    //   c.clock.step(1)\n    // //   c.io.pcIn.poke(c.io.pcOut.peek)\n    // //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.io.instIn.poke(\"h00940433\".U)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.instIn.poke(\"h952E9426\".U)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.io.instIn.poke(\"h00940433\".U)\n"
+      }
+    ]
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor10.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.metals.Diagnostics.publishDiagnostics(Diagnostics.scala:195)
+	at scala.meta.internal.metals.Diagnostics.publishDiagnostics(Diagnostics.scala:164)
+	at scala.meta.internal.metals.Diagnostics.didChange(Diagnostics.scala:112)
+	at scala.meta.internal.metals.MetalsLanguageServer.didChange(MetalsLanguageServer.scala:1193)
+	... 15 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 23 more
+
+Apr 23, 2022 3:03:59 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.parsing.FoldingRangeProvider.$anonfun$getRangedForScala$3(FoldingRangeProvider.scala:38)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.parsing.FoldingRangeProvider.$anonfun$getRangedForScala$2(FoldingRangeProvider.scala:33)
+	at scala.Option$WithFilter.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.FoldingRangeProvider.getRangedForScala(FoldingRangeProvider.scala:31)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$foldingRange$2(MetalsLanguageServer.scala:1640)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 19 more
+
+Apr 23, 2022 3:03:59 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.metals.Buffers.tokenEditDistance(Buffers.scala:30)
+	at scala.meta.internal.metals.codelenses.RunTestCodeLens.codeLenses(RunTestCodeLens.scala:63)
+	at scala.meta.internal.metals.CodeLensProvider.$anonfun$findLenses$3(CodeLensProvider.scala:26)
+	at scala.collection.immutable.List.flatMap(List.scala:366)
+	at scala.meta.internal.metals.CodeLensProvider.$anonfun$findLenses$2(CodeLensProvider.scala:26)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.metals.CodeLensProvider.findLenses(CodeLensProvider.scala:24)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeLens$2(MetalsLanguageServer.scala:1628)
+	at scala.meta.internal.metals.TimerProvider.timedThunk(TimerProvider.scala:25)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeLens$1(MetalsLanguageServer.scala:1626)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$apply$2(CancelTokens.scala:26)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 25 more
+
+Apr 23, 2022 3:04:02 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didChange",
+  "params": {
+    "textDocument": {
+      "version": 19,
+      "uri": "file:///home/almas/fpu_chisel/src/test/scala/ALUTest%20.scala"
+    },
+    "contentChanges": [
+      {
+        "text": "import chisel3._\nimport org.scalatest._\nimport chiseltest._\nimport chisel3.experimental.BundleLiterals._\nimport chiseltest.experimental.TestOptionBuilder._\nimport chiseltest.internal.VerilatorBackendAnnotation\n\nclass ALUTest extends FreeSpec with ChiselScalatestTester {\n\n  \"ALU Test\" in {\n    test(new ALU()).withAnnotations(Seq(VerilatorBackendAnnotation)){ c \u003d\u003e\n      c.io.input1.poke(\"h40000000\".U)   \n      c.io.input2.poke(\"h40800000\".U)      \n      c.io.f5.poke(\"b00010\".U)             /\n      c.io.opcode.poke(\"b1010011\".U)\n      c.clock.step(100)\n    }\n  }\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n// Working\n    //   c.io.instIn.poke(\"h952E9426\".U)\n    //   c.io.pcIn.poke(12.U)\n    //   c.clock.step(1)\n    // //   c.io.pcIn.poke(c.io.pcOut.peek)\n    // //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.io.instIn.poke(\"h00940433\".U)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.instIn.poke(\"h952E9426\".U)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.io.instIn.poke(\"h00940433\".U)\n"
+      }
+    ]
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor10.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.metals.Diagnostics.publishDiagnostics(Diagnostics.scala:195)
+	at scala.meta.internal.metals.Diagnostics.publishDiagnostics(Diagnostics.scala:164)
+	at scala.meta.internal.metals.Diagnostics.didChange(Diagnostics.scala:112)
+	at scala.meta.internal.metals.MetalsLanguageServer.didChange(MetalsLanguageServer.scala:1193)
+	... 15 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 23 more
+
+Apr 23, 2022 3:04:02 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.parsing.FoldingRangeProvider.$anonfun$getRangedForScala$3(FoldingRangeProvider.scala:38)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.parsing.FoldingRangeProvider.$anonfun$getRangedForScala$2(FoldingRangeProvider.scala:33)
+	at scala.Option$WithFilter.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.FoldingRangeProvider.getRangedForScala(FoldingRangeProvider.scala:31)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$foldingRange$2(MetalsLanguageServer.scala:1640)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 19 more
+
+Apr 23, 2022 3:04:02 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.metals.Buffers.tokenEditDistance(Buffers.scala:30)
+	at scala.meta.internal.metals.codelenses.RunTestCodeLens.codeLenses(RunTestCodeLens.scala:63)
+	at scala.meta.internal.metals.CodeLensProvider.$anonfun$findLenses$3(CodeLensProvider.scala:26)
+	at scala.collection.immutable.List.flatMap(List.scala:366)
+	at scala.meta.internal.metals.CodeLensProvider.$anonfun$findLenses$2(CodeLensProvider.scala:26)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.metals.CodeLensProvider.findLenses(CodeLensProvider.scala:24)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeLens$2(MetalsLanguageServer.scala:1628)
+	at scala.meta.internal.metals.TimerProvider.timedThunk(TimerProvider.scala:25)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeLens$1(MetalsLanguageServer.scala:1626)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$apply$2(CancelTokens.scala:26)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 25 more
+
+Apr 23, 2022 3:04:02 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didChange",
+  "params": {
+    "textDocument": {
+      "version": 20,
+      "uri": "file:///home/almas/fpu_chisel/src/test/scala/ALUTest%20.scala"
+    },
+    "contentChanges": [
+      {
+        "text": "import chisel3._\nimport org.scalatest._\nimport chiseltest._\nimport chisel3.experimental.BundleLiterals._\nimport chiseltest.experimental.TestOptionBuilder._\nimport chiseltest.internal.VerilatorBackendAnnotation\n\nclass ALUTest extends FreeSpec with ChiselScalatestTester {\n\n  \"ALU Test\" in {\n    test(new ALU()).withAnnotations(Seq(VerilatorBackendAnnotation)){ c \u003d\u003e\n      c.io.input1.poke(\"h40000000\".U)   \n      c.io.input2.poke(\"h40800000\".U)      \n      c.io.f5.poke(\"b00010\".U)             \n      c.io.opcode.poke(\"b1010011\".U)\n      c.clock.step(100)\n    }\n  }\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n// Working\n    //   c.io.instIn.poke(\"h952E9426\".U)\n    //   c.io.pcIn.poke(12.U)\n    //   c.clock.step(1)\n    // //   c.io.pcIn.poke(c.io.pcOut.peek)\n    // //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.io.instIn.poke(\"h00940433\".U)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.instIn.poke(\"h952E9426\".U)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.clock.step(1)\n    //   c.io.pcIn.poke(c.io.pcOut.peek)\n    //   c.io.instIn.poke(\"h00940433\".U)\n"
+      }
+    ]
+  }
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.GeneratedMethodAccessor10.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.metals.Diagnostics.publishDiagnostics(Diagnostics.scala:195)
+	at scala.meta.internal.metals.Diagnostics.publishDiagnostics(Diagnostics.scala:164)
+	at scala.meta.internal.metals.Diagnostics.didChange(Diagnostics.scala:112)
+	at scala.meta.internal.metals.MetalsLanguageServer.didChange(MetalsLanguageServer.scala:1193)
+	... 15 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 23 more
+
+Apr 23, 2022 3:04:02 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.parsing.FoldingRangeProvider.$anonfun$getRangedForScala$3(FoldingRangeProvider.scala:38)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.parsing.FoldingRangeProvider.$anonfun$getRangedForScala$2(FoldingRangeProvider.scala:33)
+	at scala.Option$WithFilter.flatMap(Option.scala:271)
+	at scala.meta.internal.parsing.FoldingRangeProvider.getRangedForScala(FoldingRangeProvider.scala:31)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$foldingRange$2(MetalsLanguageServer.scala:1640)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 19 more
+
+Apr 23, 2022 3:04:02 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint fallbackResponseError
+SEVERE: Internal error: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+java.util.concurrent.CompletionException: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:331)
+	at java.base/java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:346)
+	at java.base/java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:704)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:506)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2088)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1(CancelTokens.scala:40)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$future$1$adapted(CancelTokens.scala:38)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.IllegalArgumentException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI.create(URI.java:883)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:103)
+	at scala.meta.internal.mtags.MtagsEnrichments$XtensionStringMtags.toAbsolutePath(MtagsEnrichments.scala:99)
+	at scala.meta.internal.parsing.Trees.tokenized(Trees.scala:112)
+	at scala.meta.internal.parsing.TokenEditDistance$.apply(TokenEditDistance.scala:383)
+	at scala.meta.internal.metals.Buffers.tokenEditDistance(Buffers.scala:30)
+	at scala.meta.internal.metals.codelenses.RunTestCodeLens.codeLenses(RunTestCodeLens.scala:63)
+	at scala.meta.internal.metals.CodeLensProvider.$anonfun$findLenses$3(CodeLensProvider.scala:26)
+	at scala.collection.immutable.List.flatMap(List.scala:366)
+	at scala.meta.internal.metals.CodeLensProvider.$anonfun$findLenses$2(CodeLensProvider.scala:26)
+	at scala.Option.map(Option.scala:230)
+	at scala.meta.internal.metals.CodeLensProvider.findLenses(CodeLensProvider.scala:24)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeLens$2(MetalsLanguageServer.scala:1628)
+	at scala.meta.internal.metals.TimerProvider.timedThunk(TimerProvider.scala:25)
+	at scala.meta.internal.metals.MetalsLanguageServer.$anonfun$codeLens$1(MetalsLanguageServer.scala:1626)
+	at scala.meta.internal.metals.CancelTokens$.$anonfun$apply$2(CancelTokens.scala:26)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:659)
+	at scala.util.Success.$anonfun$map$1(Try.scala:255)
+	at scala.util.Success.map(Try.scala:213)
+	at scala.concurrent.Future.$anonfun$map$1(Future.scala:292)
+	at scala.concurrent.impl.Promise.liftedTree1$1(Promise.scala:33)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	... 4 more
+Caused by: java.net.URISyntaxException: Illegal character in path at index 52: file:///home/almas/fpu_chisel/src/test/scala/ALUTest .scala
+	at java.base/java.net.URI$Parser.fail(URI.java:2913)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3084)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3166)
+	at java.base/java.net.URI$Parser.parse(URI.java:3114)
+	at java.base/java.net.URI.<init>(URI.java:600)
+	at java.base/java.net.URI.create(URI.java:881)
+	... 25 more
+
+2022.04.23 15:04:03 WARN  no build target for: /home/almas/fpu_chisel/src/test/scala/ALUTest .scala[0m
+Apr 23, 2022 3:04:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 601
+2022.04.23 15:04:11 WARN  no build target for: /home/almas/fpu_chisel/src/test/scala/mulTest.scala[0m
+2022.04.23 15:04:23 WARN  no build target for: /home/almas/fpu_chisel/src/test/scala/mulTest.scala[0m
+Apr 23, 2022 3:04:25 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 649
+2022.04.23 15:04:27 WARN  no build target for: /home/almas/fpu_chisel/src/main/scala/mul.scala[0m
+Apr 23, 2022 3:04:28 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 656
+2022.04.23 15:04:29 WARN  no build target for: /home/almas/fpu_chisel/src/test/scala/FALUTest.scala[0m
+Apr 23, 2022 3:04:31 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 661
+2022.04.23 15:04:32 WARN  no build target for: /home/almas/fpu_chisel/src/main/scala/ALU.scala[0m
+Apr 23, 2022 3:04:34 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 667
+2022.04.23 15:04:35 WARN  no build target for: /home/almas/fpu_chisel/src/test/scala/ALUTest .scala[0m

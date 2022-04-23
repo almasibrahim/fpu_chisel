@@ -12,9 +12,9 @@ class mulTest extends FreeSpec with ChiselScalatestTester {
     test(new mul()).withAnnotations(Seq(VerilatorBackendAnnotation)){ c =>
 
         // pass
-        c.io.input1.poke("h40000000".U)    //4e4
-        c.io.input2.poke("h40800000".U)    //9e4      
-         c.clock.step(100)                   //(h43041498) 
+        // c.io.input1.poke("h40000000".U)   
+        // c.io.input2.poke("h40800000".U)         
+        // c.clock.step(100)                   
        // pass
         // c.io.input1.poke("hC28FDAE0".U)   
         // c.io.input2.poke("hBFEB0BE1".U)       

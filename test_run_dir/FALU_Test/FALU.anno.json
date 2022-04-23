@@ -1,0 +1,24 @@
+[
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~FALU|FALU>io_result",
+    "sources":[
+      "~FALU|FALU>io_opcode",
+      "~FALU|FALU>io_input1",
+      "~FALU|FALU>io_input2",
+      "~FALU|FALU>io_aluCtl"
+    ]
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~FALU|mul>tmptFrac"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"test_run_dir/FALU_Test"
+  }
+]

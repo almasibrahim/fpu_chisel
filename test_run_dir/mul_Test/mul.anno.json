@@ -1,0 +1,22 @@
+[
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~mul|mul>io_result",
+    "sources":[
+      "~mul|mul>io_input1",
+      "~mul|mul>io_input2"
+    ]
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~mul|mul>tmptFrac"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"test_run_dir/mul_Test"
+  }
+]

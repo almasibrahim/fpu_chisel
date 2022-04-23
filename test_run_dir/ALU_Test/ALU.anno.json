@@ -1,0 +1,25 @@
+[
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~ALU|ALU>io_result",
+    "sources":[
+      "~ALU|ALU>io_opcode",
+      "~ALU|ALU>io_input1",
+      "~ALU|ALU>io_input2",
+      "~ALU|ALU>io_f5",
+      "~ALU|ALU>io_aluCtl"
+    ]
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.transforms.DontTouchAnnotation",
+    "target":"~ALU|mul>tmptFrac"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"test_run_dir/ALU_Test"
+  }
+]

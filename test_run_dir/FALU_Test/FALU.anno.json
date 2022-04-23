@@ -3,11 +3,23 @@
     "class":"firrtl.transforms.CombinationalPath",
     "sink":"~FALU|FALU>io_result",
     "sources":[
+      "~FALU|FALU>io_aluCtl",
       "~FALU|FALU>io_opcode",
       "~FALU|FALU>io_input1",
-      "~FALU|FALU>io_input2",
-      "~FALU|FALU>io_aluCtl"
+      "~FALU|FALU>io_input2"
     ]
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~FALU|NFALU",
+    "duplicate":"~FALU|FALU/add:NFALU",
+    "index":0.0
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~FALU|NFALU_1",
+    "duplicate":"~FALU|FALU/add_1:NFALU",
+    "index":0.3333333333333333
   },
   {
     "class":"firrtl.EmitCircuitAnnotation",

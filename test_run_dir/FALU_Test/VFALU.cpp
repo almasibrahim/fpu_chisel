@@ -135,10 +135,56 @@ VL_INLINE_OPT void VFALU::_combo__TOP__1(VFALU__Syms* __restrict vlSymsp) {
                                                      : 
                                                     (vlTOPp->io_input2 
                                                      >> 0x17U))));
+    vlTOPp->FALU__DOT__add_1__DOT__o_exp = (0xffU & 
+                                            (((0xffU 
+                                               & (vlTOPp->io_input1 
+                                                  >> 0x17U)) 
+                                              == (0xffU 
+                                                  & (vlTOPp->io_input2 
+                                                     >> 0x17U)))
+                                              ? (vlTOPp->io_input1 
+                                                 >> 0x17U)
+                                              : (((0xffU 
+                                                   & (vlTOPp->io_input1 
+                                                      >> 0x17U)) 
+                                                  > 
+                                                  (0xffU 
+                                                   & (vlTOPp->io_input2 
+                                                      >> 0x17U)))
+                                                  ? 
+                                                 (vlTOPp->io_input1 
+                                                  >> 0x17U)
+                                                  : 
+                                                 (vlTOPp->io_input2 
+                                                  >> 0x17U))));
     vlTOPp->FALU__DOT__add__DOT___T_1 = ((1U & (vlTOPp->io_input1 
                                                 >> 0x1fU)) 
                                          == (1U & (vlTOPp->io_input2 
                                                    >> 0x1fU)));
+    vlTOPp->FALU__DOT__add_1__DOT__diff = (((0xffU 
+                                             & (vlTOPp->io_input1 
+                                                >> 0x17U)) 
+                                            == (0xffU 
+                                                & (vlTOPp->io_input2 
+                                                   >> 0x17U)))
+                                            ? 0U : 
+                                           (0xffU & 
+                                            (((0xffU 
+                                               & (vlTOPp->io_input1 
+                                                  >> 0x17U)) 
+                                              > (0xffU 
+                                                 & (vlTOPp->io_input2 
+                                                    >> 0x17U)))
+                                              ? ((vlTOPp->io_input1 
+                                                  >> 0x17U) 
+                                                 - 
+                                                 (vlTOPp->io_input2 
+                                                  >> 0x17U))
+                                              : ((vlTOPp->io_input2 
+                                                  >> 0x17U) 
+                                                 - 
+                                                 (vlTOPp->io_input1 
+                                                  >> 0x17U)))));
     vlTOPp->FALU__DOT__add__DOT__diff = (((0xffU & 
                                            (vlTOPp->io_input1 
                                             >> 0x17U)) 
@@ -328,6 +374,40 @@ VL_INLINE_OPT void VFALU::_combo__TOP__1(VFALU__Syms* __restrict vlSymsp) {
                                                                              : VL_ULL(0))))))
                                                                         : vlTOPp->FALU__DOT__mult__DOT__o_mant))) 
                                                                     >> 0x17U))))));
+    vlTOPp->FALU__DOT__add_1__DOT__tmp_mant = (((0xffU 
+                                                 & (vlTOPp->io_input1 
+                                                    >> 0x17U)) 
+                                                == 
+                                                (0xffU 
+                                                 & (vlTOPp->io_input2 
+                                                    >> 0x17U)))
+                                                ? 0U
+                                                : (0xffffffU 
+                                                   & (((0xffU 
+                                                        & (vlTOPp->io_input1 
+                                                           >> 0x17U)) 
+                                                       > 
+                                                       (0xffU 
+                                                        & (vlTOPp->io_input2 
+                                                           >> 0x17U)))
+                                                       ? 
+                                                      ((0x17U 
+                                                        >= (IData)(vlTOPp->FALU__DOT__add_1__DOT__diff))
+                                                        ? 
+                                                       ((0x800000U 
+                                                         | (0x7fffffU 
+                                                            & vlTOPp->io_input2)) 
+                                                        >> (IData)(vlTOPp->FALU__DOT__add_1__DOT__diff))
+                                                        : 0U)
+                                                       : 
+                                                      ((0x17U 
+                                                        >= (IData)(vlTOPp->FALU__DOT__add_1__DOT__diff))
+                                                        ? 
+                                                       ((0x800000U 
+                                                         | (0x7fffffU 
+                                                            & vlTOPp->io_input1)) 
+                                                        >> (IData)(vlTOPp->FALU__DOT__add_1__DOT__diff))
+                                                        : 0U))));
     vlTOPp->FALU__DOT__add__DOT__tmp_mant = (((0xffU 
                                                & (vlTOPp->io_input1 
                                                   >> 0x17U)) 
@@ -361,6 +441,87 @@ VL_INLINE_OPT void VFALU::_combo__TOP__1(VFALU__Syms* __restrict vlSymsp) {
                                                        & vlTOPp->io_input1)) 
                                                    >> (IData)(vlTOPp->FALU__DOT__add__DOT__diff))
                                                    : 0U))));
+    vlTOPp->FALU__DOT__add_1__DOT__o_mant = (0x1ffffffU 
+                                             & (((0xffU 
+                                                  & (vlTOPp->io_input1 
+                                                     >> 0x17U)) 
+                                                 == 
+                                                 (0xffU 
+                                                  & (vlTOPp->io_input2 
+                                                     >> 0x17U)))
+                                                 ? 
+                                                ((0x80000000U 
+                                                  & vlTOPp->io_input1)
+                                                  ? 
+                                                 (0x1000000U 
+                                                  | (0xffffffU 
+                                                     & ((0x800000U 
+                                                         | (0x7fffffU 
+                                                            & vlTOPp->io_input1)) 
+                                                        + 
+                                                        (0x800000U 
+                                                         | (0x7fffffU 
+                                                            & vlTOPp->io_input2)))))
+                                                  : 
+                                                 (((0x800000U 
+                                                    | (0x7fffffU 
+                                                       & vlTOPp->io_input1)) 
+                                                   > 
+                                                   (0x800000U 
+                                                    | (0x7fffffU 
+                                                       & vlTOPp->io_input2)))
+                                                   ? 
+                                                  (0xffffffU 
+                                                   & ((0x800000U 
+                                                       | (0x7fffffU 
+                                                          & vlTOPp->io_input1)) 
+                                                      - 
+                                                      (0x800000U 
+                                                       | (0x7fffffU 
+                                                          & vlTOPp->io_input2))))
+                                                   : 
+                                                  (0xffffffU 
+                                                   & ((0x800000U 
+                                                       | (0x7fffffU 
+                                                          & vlTOPp->io_input2)) 
+                                                      - 
+                                                      (0x800000U 
+                                                       | (0x7fffffU 
+                                                          & vlTOPp->io_input1))))))
+                                                 : 
+                                                (((0xffU 
+                                                   & (vlTOPp->io_input1 
+                                                      >> 0x17U)) 
+                                                  > 
+                                                  (0xffU 
+                                                   & (vlTOPp->io_input2 
+                                                      >> 0x17U)))
+                                                  ? 
+                                                 ((0x80000000U 
+                                                   & vlTOPp->io_input1)
+                                                   ? 
+                                                  ((0x800000U 
+                                                    | (0x7fffffU 
+                                                       & vlTOPp->io_input1)) 
+                                                   + vlTOPp->FALU__DOT__add_1__DOT__tmp_mant)
+                                                   : 
+                                                  ((0x800000U 
+                                                    | (0x7fffffU 
+                                                       & vlTOPp->io_input1)) 
+                                                   - vlTOPp->FALU__DOT__add_1__DOT__tmp_mant))
+                                                  : 
+                                                 ((0x80000000U 
+                                                   & vlTOPp->io_input1)
+                                                   ? 
+                                                  ((0x800000U 
+                                                    | (0x7fffffU 
+                                                       & vlTOPp->io_input2)) 
+                                                   + vlTOPp->FALU__DOT__add_1__DOT__tmp_mant)
+                                                   : 
+                                                  ((0x800000U 
+                                                    | (0x7fffffU 
+                                                       & vlTOPp->io_input2)) 
+                                                   - vlTOPp->FALU__DOT__add_1__DOT__tmp_mant)))));
     vlTOPp->FALU__DOT__add__DOT__o_mant = (0x1ffffffU 
                                            & (((0xffU 
                                                 & (vlTOPp->io_input1 
@@ -444,6 +605,184 @@ VL_INLINE_OPT void VFALU::_combo__TOP__1(VFALU__Syms* __restrict vlSymsp) {
                                                      | (0x7fffffU 
                                                         & vlTOPp->io_input2)) 
                                                     - vlTOPp->FALU__DOT__add__DOT__tmp_mant)))));
+    vlTOPp->FALU__DOT__add_1__DOT___GEN_34 = ((1U == 
+                                               (0x7ffU 
+                                                & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                   >> 0xdU)))
+                                               ? ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                  << 0xaU)
+                                               : ((1U 
+                                                   == 
+                                                   (0x3ffU 
+                                                    & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                       >> 0xeU)))
+                                                   ? 
+                                                  ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                   << 9U)
+                                                   : 
+                                                  ((1U 
+                                                    == 
+                                                    (0x1ffU 
+                                                     & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                        >> 0xfU)))
+                                                    ? 
+                                                   ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                    << 8U)
+                                                    : (QData)((IData)(
+                                                                      ((1U 
+                                                                        == 
+                                                                        (0xffU 
+                                                                         & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                            >> 0x10U)))
+                                                                        ? 
+                                                                       (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                        << 7U)
+                                                                        : 
+                                                                       ((1U 
+                                                                         == 
+                                                                         (0x7fU 
+                                                                          & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                             >> 0x11U)))
+                                                                         ? 
+                                                                        (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                         << 6U)
+                                                                         : 
+                                                                        ((1U 
+                                                                          == 
+                                                                          (0x3fU 
+                                                                           & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                              >> 0x12U)))
+                                                                          ? 
+                                                                         (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                          << 5U)
+                                                                          : 
+                                                                         ((1U 
+                                                                           == 
+                                                                           (0x1fU 
+                                                                            & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                               >> 0x13U)))
+                                                                           ? 
+                                                                          (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                           << 4U)
+                                                                           : 
+                                                                          ((1U 
+                                                                            == 
+                                                                            (0xfU 
+                                                                             & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                                >> 0x14U)))
+                                                                            ? 
+                                                                           (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                            << 3U)
+                                                                            : 
+                                                                           ((1U 
+                                                                             == 
+                                                                             (7U 
+                                                                              & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                                >> 0x15U)))
+                                                                             ? 
+                                                                            (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                             << 2U)
+                                                                             : 
+                                                                            ((1U 
+                                                                              == 
+                                                                              (3U 
+                                                                               & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                                >> 0x16U)))
+                                                                              ? 
+                                                                             (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                              << 1U)
+                                                                              : 0U))))))))))));
+    vlTOPp->FALU__DOT__add_1__DOT___GEN_35 = (0xffU 
+                                              & ((1U 
+                                                  == 
+                                                  (0x7ffU 
+                                                   & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                      >> 0xdU)))
+                                                  ? 
+                                                 ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                  - (IData)(0xaU))
+                                                  : 
+                                                 ((1U 
+                                                   == 
+                                                   (0x3ffU 
+                                                    & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                       >> 0xeU)))
+                                                   ? 
+                                                  ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                   - (IData)(9U))
+                                                   : 
+                                                  ((1U 
+                                                    == 
+                                                    (0x1ffU 
+                                                     & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                        >> 0xfU)))
+                                                    ? 
+                                                   ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                    - (IData)(8U))
+                                                    : 
+                                                   ((1U 
+                                                     == 
+                                                     (0xffU 
+                                                      & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                         >> 0x10U)))
+                                                     ? 
+                                                    ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                     - (IData)(7U))
+                                                     : 
+                                                    ((1U 
+                                                      == 
+                                                      (0x7fU 
+                                                       & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                          >> 0x11U)))
+                                                      ? 
+                                                     ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                      - (IData)(6U))
+                                                      : 
+                                                     ((1U 
+                                                       == 
+                                                       (0x3fU 
+                                                        & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                           >> 0x12U)))
+                                                       ? 
+                                                      ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                       - (IData)(5U))
+                                                       : 
+                                                      ((1U 
+                                                        == 
+                                                        (0x1fU 
+                                                         & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                            >> 0x13U)))
+                                                        ? 
+                                                       ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                        - (IData)(4U))
+                                                        : 
+                                                       ((1U 
+                                                         == 
+                                                         (0xfU 
+                                                          & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                             >> 0x14U)))
+                                                         ? 
+                                                        ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                         - (IData)(3U))
+                                                         : 
+                                                        ((1U 
+                                                          == 
+                                                          (7U 
+                                                           & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                              >> 0x15U)))
+                                                          ? 
+                                                         ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                          - (IData)(2U))
+                                                          : 
+                                                         ((1U 
+                                                           == 
+                                                           (3U 
+                                                            & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                               >> 0x16U)))
+                                                           ? 
+                                                          ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                           - (IData)(1U))
+                                                           : 0U)))))))))));
     vlTOPp->FALU__DOT__add__DOT___GEN_34 = ((1U == 
                                              (0x7ffU 
                                               & (vlTOPp->FALU__DOT__add__DOT__o_mant 
@@ -619,6 +958,191 @@ VL_INLINE_OPT void VFALU::_combo__TOP__1(VFALU__Syms* __restrict vlSymsp) {
                                                          ((IData)(vlTOPp->FALU__DOT__add__DOT__o_exp) 
                                                           - (IData)(1U))
                                                           : 0U)))))))))));
+    vlTOPp->FALU__DOT__add_1__DOT___GEN_54 = ((1U == 
+                                               (0x1fffffU 
+                                                & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                   >> 3U)))
+                                               ? ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                  << 0x14U)
+                                               : ((1U 
+                                                   == 
+                                                   (0xfffffU 
+                                                    & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                       >> 4U)))
+                                                   ? 
+                                                  ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                   << 0x13U)
+                                                   : 
+                                                  ((1U 
+                                                    == 
+                                                    (0x7ffffU 
+                                                     & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                        >> 5U)))
+                                                    ? 
+                                                   ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                    << 0x12U)
+                                                    : 
+                                                   ((1U 
+                                                     == 
+                                                     (0x3ffffU 
+                                                      & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                         >> 6U)))
+                                                     ? 
+                                                    ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                     << 0x11U)
+                                                     : 
+                                                    ((1U 
+                                                      == 
+                                                      (0x1ffffU 
+                                                       & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                          >> 7U)))
+                                                      ? 
+                                                     ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                      << 0x10U)
+                                                      : 
+                                                     ((1U 
+                                                       == 
+                                                       (0xffffU 
+                                                        & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                           >> 8U)))
+                                                       ? 
+                                                      ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                       << 0xfU)
+                                                       : 
+                                                      ((1U 
+                                                        == 
+                                                        (0x7fffU 
+                                                         & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                            >> 9U)))
+                                                        ? 
+                                                       ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                        << 0xeU)
+                                                        : 
+                                                       ((1U 
+                                                         == 
+                                                         (0x3fffU 
+                                                          & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                             >> 0xaU)))
+                                                         ? 
+                                                        ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                         << 0xdU)
+                                                         : 
+                                                        ((1U 
+                                                          == 
+                                                          (0x1fffU 
+                                                           & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                              >> 0xbU)))
+                                                          ? 
+                                                         ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                          << 0xcU)
+                                                          : 
+                                                         ((1U 
+                                                           == 
+                                                           (0xfffU 
+                                                            & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                               >> 0xcU)))
+                                                           ? 
+                                                          ((QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant)) 
+                                                           << 0xbU)
+                                                           : vlTOPp->FALU__DOT__add_1__DOT___GEN_34))))))))));
+    vlTOPp->FALU__DOT__add_1__DOT___GEN_57 = (0xffU 
+                                              & (((~ 
+                                                   (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                    >> 0x17U)) 
+                                                  & (0U 
+                                                     != (IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp)))
+                                                  ? 
+                                                 ((1U 
+                                                   == 
+                                                   (0x1fffffU 
+                                                    & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                       >> 3U)))
+                                                   ? 
+                                                  ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                   - (IData)(0x14U))
+                                                   : 
+                                                  ((1U 
+                                                    == 
+                                                    (0xfffffU 
+                                                     & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                        >> 4U)))
+                                                    ? 
+                                                   ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                    - (IData)(0x13U))
+                                                    : 
+                                                   ((1U 
+                                                     == 
+                                                     (0x7ffffU 
+                                                      & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                         >> 5U)))
+                                                     ? 
+                                                    ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                     - (IData)(0x12U))
+                                                     : 
+                                                    ((1U 
+                                                      == 
+                                                      (0x3ffffU 
+                                                       & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                          >> 6U)))
+                                                      ? 
+                                                     ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                      - (IData)(0x11U))
+                                                      : 
+                                                     ((1U 
+                                                       == 
+                                                       (0x1ffffU 
+                                                        & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                           >> 7U)))
+                                                       ? 
+                                                      ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                       - (IData)(0x10U))
+                                                       : 
+                                                      ((1U 
+                                                        == 
+                                                        (0xffffU 
+                                                         & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                            >> 8U)))
+                                                        ? 
+                                                       ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                        - (IData)(0xfU))
+                                                        : 
+                                                       ((1U 
+                                                         == 
+                                                         (0x7fffU 
+                                                          & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                             >> 9U)))
+                                                         ? 
+                                                        ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                         - (IData)(0xeU))
+                                                         : 
+                                                        ((1U 
+                                                          == 
+                                                          (0x3fffU 
+                                                           & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                              >> 0xaU)))
+                                                          ? 
+                                                         ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                          - (IData)(0xdU))
+                                                          : 
+                                                         ((1U 
+                                                           == 
+                                                           (0x1fffU 
+                                                            & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                               >> 0xbU)))
+                                                           ? 
+                                                          ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                           - (IData)(0xcU))
+                                                           : 
+                                                          ((1U 
+                                                            == 
+                                                            (0xfffU 
+                                                             & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                >> 0xcU)))
+                                                            ? 
+                                                           ((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp) 
+                                                            - (IData)(0xbU))
+                                                            : (IData)(vlTOPp->FALU__DOT__add_1__DOT___GEN_35)))))))))))
+                                                  : (IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp)));
     vlTOPp->FALU__DOT__add__DOT___GEN_54 = ((1U == 
                                              (0x1fffffU 
                                               & (vlTOPp->FALU__DOT__add__DOT__o_mant 
@@ -802,8 +1326,7 @@ VL_INLINE_OPT void VFALU::_combo__TOP__1(VFALU__Syms* __restrict vlSymsp) {
                                                            - (IData)(0xbU))
                                                            : (IData)(vlTOPp->FALU__DOT__add__DOT___GEN_35)))))))))))
                                               : (IData)(vlTOPp->FALU__DOT__add__DOT__o_exp)));
-    vlTOPp->io_result = ((((0U == (IData)(vlTOPp->io_aluCtl)) 
-                           | (1U == (IData)(vlTOPp->io_aluCtl))) 
+    vlTOPp->io_result = (((0U == (IData)(vlTOPp->io_aluCtl)) 
                           & (0x53U == (IData)(vlTOPp->io_opcode)))
                           ? ((0x80000000U & ((((0xffU 
                                                 & (vlTOPp->io_input1 
@@ -874,9 +1397,68 @@ VL_INLINE_OPT void VFALU::_combo__TOP__1(VFALU__Syms* __restrict vlSymsp) {
                                                              != (IData)(vlTOPp->FALU__DOT__add__DOT__o_exp)))
                                                           ? vlTOPp->FALU__DOT__add__DOT___GEN_54
                                                           : (QData)((IData)(vlTOPp->FALU__DOT__add__DOT__o_mant))))))))
-                          : (((0U == vlTOPp->io_input1) 
-                              | (0U == vlTOPp->io_input2))
-                              ? 0U : vlTOPp->FALU__DOT__mult__DOT___io_result_T));
+                          : (((1U == (IData)(vlTOPp->io_aluCtl)) 
+                              & (0x53U == (IData)(vlTOPp->io_opcode)))
+                              ? ((0x80000000U & (((
+                                                   (0xffU 
+                                                    & (vlTOPp->io_input1 
+                                                       >> 0x17U)) 
+                                                   == 
+                                                   (0xffU 
+                                                    & (vlTOPp->io_input2 
+                                                       >> 0x17U)))
+                                                   ? 
+                                                  ((0x80000000U 
+                                                    & vlTOPp->io_input1)
+                                                    ? 
+                                                   (vlTOPp->io_input1 
+                                                    >> 0x1fU)
+                                                    : 
+                                                   (((0x800000U 
+                                                      | (0x7fffffU 
+                                                         & vlTOPp->io_input1)) 
+                                                     <= 
+                                                     (0x800000U 
+                                                      | (0x7fffffU 
+                                                         & vlTOPp->io_input2))) 
+                                                    | (vlTOPp->io_input1 
+                                                       >> 0x1fU)))
+                                                   : 
+                                                  (((0xffU 
+                                                     & (vlTOPp->io_input1 
+                                                        >> 0x17U)) 
+                                                    <= 
+                                                    (0xffU 
+                                                     & (vlTOPp->io_input2 
+                                                        >> 0x17U))) 
+                                                   | (vlTOPp->io_input1 
+                                                      >> 0x1fU))) 
+                                                 << 0x1fU)) 
+                                 | ((0x7f800000U & 
+                                     (((0x1000000U 
+                                        & vlTOPp->FALU__DOT__add_1__DOT__o_mant)
+                                        ? ((IData)(1U) 
+                                           + (IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp))
+                                        : (IData)(vlTOPp->FALU__DOT__add_1__DOT___GEN_57)) 
+                                      << 0x17U)) | 
+                                    (0x7fffffU & (IData)(
+                                                         ((0x1000000U 
+                                                           & vlTOPp->FALU__DOT__add_1__DOT__o_mant)
+                                                           ? (QData)((IData)(
+                                                                             (0xffffffU 
+                                                                              & (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                                                >> 1U))))
+                                                           : 
+                                                          (((~ 
+                                                             (vlTOPp->FALU__DOT__add_1__DOT__o_mant 
+                                                              >> 0x17U)) 
+                                                            & (0U 
+                                                               != (IData)(vlTOPp->FALU__DOT__add_1__DOT__o_exp)))
+                                                            ? vlTOPp->FALU__DOT__add_1__DOT___GEN_54
+                                                            : (QData)((IData)(vlTOPp->FALU__DOT__add_1__DOT__o_mant))))))))
+                              : (((0U == vlTOPp->io_input1) 
+                                  | (0U == vlTOPp->io_input2))
+                                  ? 0U : vlTOPp->FALU__DOT__mult__DOT___io_result_T)));
 }
 
 void VFALU::_eval(VFALU__Syms* __restrict vlSymsp) {
@@ -950,6 +1532,14 @@ void VFALU::_ctor_var_reset() {
     FALU__DOT__add__DOT___GEN_35 = VL_RAND_RESET_I(8);
     FALU__DOT__add__DOT___GEN_54 = VL_RAND_RESET_Q(56);
     FALU__DOT__add__DOT___GEN_57 = VL_RAND_RESET_I(8);
+    FALU__DOT__add_1__DOT__diff = VL_RAND_RESET_I(8);
+    FALU__DOT__add_1__DOT__tmp_mant = VL_RAND_RESET_I(24);
+    FALU__DOT__add_1__DOT__o_exp = VL_RAND_RESET_I(8);
+    FALU__DOT__add_1__DOT__o_mant = VL_RAND_RESET_I(25);
+    FALU__DOT__add_1__DOT___GEN_34 = VL_RAND_RESET_Q(40);
+    FALU__DOT__add_1__DOT___GEN_35 = VL_RAND_RESET_I(8);
+    FALU__DOT__add_1__DOT___GEN_54 = VL_RAND_RESET_Q(56);
+    FALU__DOT__add_1__DOT___GEN_57 = VL_RAND_RESET_I(8);
     FALU__DOT__mult__DOT__o_mant = VL_RAND_RESET_Q(48);
     FALU__DOT__mult__DOT__o_exp = VL_RAND_RESET_I(8);
     FALU__DOT__mult__DOT___io_result_T = VL_RAND_RESET_I(32);

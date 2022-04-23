@@ -9,9 +9,9 @@ class ALUTest extends FreeSpec with ChiselScalatestTester {
 
   "ALU Test" in {
     test(new ALU()).withAnnotations(Seq(VerilatorBackendAnnotation)){ c =>
-      c.io.input1.poke("h40000000".U)   
-      c.io.input2.poke("h40800000".U)      
-      c.io.f5.poke("b00010".U)             
+      c.io.input1.poke("h42040000".U)   
+      c.io.input2.poke("h41500000".U)      
+      c.io.f5.poke("b00001".U)             
       c.io.opcode.poke("b1010011".U)
       c.clock.step(100)
     }

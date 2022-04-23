@@ -39,12 +39,20 @@ VL_MODULE(VFALU) {
     CData/*7:0*/ FALU__DOT__add__DOT__o_exp;
     CData/*7:0*/ FALU__DOT__add__DOT___GEN_35;
     CData/*7:0*/ FALU__DOT__add__DOT___GEN_57;
+    CData/*7:0*/ FALU__DOT__add_1__DOT__diff;
+    CData/*7:0*/ FALU__DOT__add_1__DOT__o_exp;
+    CData/*7:0*/ FALU__DOT__add_1__DOT___GEN_35;
+    CData/*7:0*/ FALU__DOT__add_1__DOT___GEN_57;
     CData/*7:0*/ FALU__DOT__mult__DOT__o_exp;
     IData/*23:0*/ FALU__DOT__add__DOT__tmp_mant;
     IData/*24:0*/ FALU__DOT__add__DOT__o_mant;
+    IData/*23:0*/ FALU__DOT__add_1__DOT__tmp_mant;
+    IData/*24:0*/ FALU__DOT__add_1__DOT__o_mant;
     IData/*31:0*/ FALU__DOT__mult__DOT___io_result_T;
     QData/*39:0*/ FALU__DOT__add__DOT___GEN_34;
     QData/*55:0*/ FALU__DOT__add__DOT___GEN_54;
+    QData/*39:0*/ FALU__DOT__add_1__DOT___GEN_34;
+    QData/*55:0*/ FALU__DOT__add_1__DOT___GEN_54;
     QData/*47:0*/ FALU__DOT__mult__DOT__o_mant;
     
     // LOCAL VARIABLES

@@ -4,3 +4,5 @@
 1650707440387:testOnly mulTest -- -DwriteVcd=1
 1650707594075:testOnly FALUTest -- -DwriteVcd=1
 1650708022710:testOnly ALUTest -- -DwriteVcd=1
+1650710090490:testOnly NFALUTest -- -DwriteVcd=1
+1650710823299:testOnly FALUTest -- -DwriteVcd=1

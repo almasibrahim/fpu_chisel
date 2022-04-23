@@ -20,10 +20,17 @@ class FALU extends Module {
     //   add.io.input2 := io.input2
     //   io.result:= add.io.result
 
-    when((io.aluCtl==="b00000".U || io.aluCtl==="b00001".U) && io.opcode==="b1010011".U){
+    when(io.aluCtl==="b00000".U  && io.opcode==="b1010011".U){
         val add = Module(new NFALU)
         add.io.input1:=io.input1
         add.io.input2 := io.input2
+        // mult.io.input1:=0.U
+        // mult.io.input2 := 0.U
+        io.result:= add.io.result
+    }.elsewhen( io.aluCtl==="b00001".U && io.opcode==="b1010011".U){
+        val add = Module(new NFALU)
+        add.io.input1:=io.input1
+        add.io.input2 := Cat(1.U,io.input2(30,0))
         // mult.io.input1:=0.U
         // mult.io.input2 := 0.U
         io.result:= add.io.result

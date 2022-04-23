@@ -223,22 +223,35 @@ module FALU(
   wire [31:0] add_io_input1; // @[FALU.scala 24:25]
   wire [31:0] add_io_input2; // @[FALU.scala 24:25]
   wire [31:0] add_io_result; // @[FALU.scala 24:25]
-  wire [31:0] mult_io_input1; // @[FALU.scala 31:24]
-  wire [31:0] mult_io_input2; // @[FALU.scala 31:24]
-  wire [31:0] mult_io_result; // @[FALU.scala 31:24]
+  wire [31:0] add_1_io_input1; // @[FALU.scala 31:25]
+  wire [31:0] add_1_io_input2; // @[FALU.scala 31:25]
+  wire [31:0] add_1_io_result; // @[FALU.scala 31:25]
+  wire [31:0] mult_io_input1; // @[FALU.scala 38:24]
+  wire [31:0] mult_io_input2; // @[FALU.scala 38:24]
+  wire [31:0] mult_io_result; // @[FALU.scala 38:24]
+  wire  _T_1 = io_opcode == 7'h53; // @[FALU.scala 23:46]
+  wire [30:0] add_io_input2_lo = io_input2[30:0]; // @[FALU.scala 33:43]
+  wire [31:0] _GEN_0 = io_aluCtl == 5'h1 & _T_1 ? add_1_io_result : mult_io_result; // @[FALU.scala 30:68 FALU.scala 36:18 FALU.scala 43:18]
   NFALU add ( // @[FALU.scala 24:25]
     .io_input1(add_io_input1),
     .io_input2(add_io_input2),
     .io_result(add_io_result)
   );
-  mul mult ( // @[FALU.scala 31:24]
+  NFALU add_1 ( // @[FALU.scala 31:25]
+    .io_input1(add_1_io_input1),
+    .io_input2(add_1_io_input2),
+    .io_result(add_1_io_result)
+  );
+  mul mult ( // @[FALU.scala 38:24]
     .io_input1(mult_io_input1),
     .io_input2(mult_io_input2),
     .io_result(mult_io_result)
   );
-  assign io_result = (io_aluCtl == 5'h0 | io_aluCtl == 5'h1) & io_opcode == 7'h53 ? add_io_result : mult_io_result; // @[FALU.scala 23:89 FALU.scala 29:18 FALU.scala 36:18]
+  assign io_result = io_aluCtl == 5'h0 & io_opcode == 7'h53 ? add_io_result : _GEN_0; // @[FALU.scala 23:62 FALU.scala 29:18]
   assign add_io_input1 = io_input1; // @[FALU.scala 25:22]
   assign add_io_input2 = io_input2; // @[FALU.scala 26:23]
-  assign mult_io_input1 = io_input1; // @[FALU.scala 34:23]
-  assign mult_io_input2 = io_input2; // @[FALU.scala 35:24]
+  assign add_1_io_input1 = io_input1; // @[FALU.scala 32:22]
+  assign add_1_io_input2 = {1'h1,add_io_input2_lo}; // @[Cat.scala 30:58]
+  assign mult_io_input1 = io_input1; // @[FALU.scala 41:23]
+  assign mult_io_input2 = io_input2; // @[FALU.scala 42:24]
 endmodule

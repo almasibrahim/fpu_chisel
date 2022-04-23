@@ -74,8 +74,22 @@ class NFALU extends Module {
                 o_mant:= Cat(0.U,fracBitIn1)+Cat(0.U,tmp_mant)
             }.otherwise{
                 o_mant:= Cat(0.U,fracBitIn1)-Cat(0.U,tmp_mant)
+            }   
+        }.otherwise{
+            o_exp:=expBitIn2
+            o_sign:=signBitIn2
+            diff:= expBitIn2-expBitIn1
+            tmp_mant:= fracBitIn1 >>diff
+            when(signBitIn1===signBitIn2){
+                o_mant:= Cat(0.U,fracBitIn2)+Cat(0.U,tmp_mant)
+            }.otherwise{
+                o_mant:= Cat(0.U,fracBitIn2)-Cat(0.U,tmp_mant)
             }
         }
+            
+        
+       
+        
     }
     when(o_mant(24)===1.U){
         temFrac := o_mant >> 1.U

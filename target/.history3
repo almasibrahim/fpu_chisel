@@ -1,0 +1,2 @@
+1650704728582:testOnly NFALUTests -- -DwriteVcd=1
+1650704767925:testOnly NFALUTest -- -DwriteVcd=1

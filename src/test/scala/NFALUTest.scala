@@ -10,9 +10,9 @@ class NFALUTest extends FreeSpec with ChiselScalatestTester {
   "NFALU Test" in {
     test(new NFALU()).withAnnotations(Seq(VerilatorBackendAnnotation)){ c =>
 
-      c.io.input1.poke("h41A00000".U)    //4e4
-      c.io.input2.poke("h41500000".U)    //9e4   
-      //c.io.aluCtl.poke("b00000".U)             // expected output (47fde800)
+      c.io.input1.poke("h41500000".U)    //13.0
+      c.io.input2.poke("h41A00000".U)    //20.0  
+      //c.io.aluCtl.poke("b00000".U)             // expected output (42040000)
       //c.io.opcode.poke("b1010011".U)
       c.clock.step(100)
       
